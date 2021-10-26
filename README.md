@@ -1,0 +1,2 @@
+# PROSJEKT-9
+DEL 1
