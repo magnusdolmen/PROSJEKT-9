@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Oct 12 15:00:22 2021
+
+@author: magnusdolmen
+"""
+
+
+
+class MultipleChoice:
+    def __init__(self, question, answers, answer):
+        self.question = question
+        self.answers = answers
+        self.answer = answer
+#Oppretter en klasse, med parameterene spørsmål, svaralternativ og svar. 
+#Overfører lokalvariablene, til instansvariabler. 
+
+    def __str__(self):
+        display = f"""
+        The question is:
+            {self.question}
+            1. {self.answers[0]}
+            2. {self.answers[1]}
+            3. {self.answers[2]}
+            4. {self.answers[3]}
+        """
+        return display
+#Her definerer jeg displayet mitt. Hvilket svaralternativ som hørrer til hvilket nummer. 
+#Her definerer jeg svaralternativene. Svaralternativ 1 har indeks 0, osv. 
+    
+    def check_answer(self, number):
+        if self.answer == number:
+            return True
+        else:
+            return False
+    
+#Her definerer jeg en sjekk svar funksjon, med parameteren nummer. 
+#Nedenfor har jeg definert hvilke svar som er riktige og ikke, og det er dette som er "self.answer"
+#Viss det riktige svaret er det samme som nummeret jeg har skrevet inn, så returneres svaret "True"
+#Viss svaret mitt er feil, returneres svaret "False". 
+    
+quest1 = MultipleChoice("Hvor mange fingrer har vi? ", ["5", "10", "1", "3"], 2)
+quest2 = MultipleChoice("Hvor mange ben har jeg? ", ["2", "1", "10", "7"], 1)
+print(quest1)
+print(quest1.check_answer(int(input("What is your answer? "))))
+print(quest2)
+print(quest2.check_answer(int(input("What is your answer? "))))
+
+
+#Her lager jeg spørsmålene mine, med di ulike svaralternativene og det riktige svaret. 
+#Først printer jeg spørsmålsteksten, med svaralternativene. 
+#Deretter printer jeg svaret mitt. 
+#Svaret mitt blir kjørt gjennom check_answer funksjonen. Her avgjøres det om svaret er riktig eller ikke. 
+
+
