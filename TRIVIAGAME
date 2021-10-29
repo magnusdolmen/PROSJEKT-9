@@ -31,11 +31,6 @@ class MultipleChoice:
     def korrekt_svar(self):
         return f"\n The correkt answer is: {self.answers[self.answer]} \n"
     
-    
-   
-        
-                               
-            
 
 
 def readline():
@@ -54,10 +49,8 @@ def readline():
     return spørsmålsliste
     
                 
-             
-    
-            
-#må lage en funksjon som stiller spørsmål for hver linje. 
+                        
+#må lage en funksjon som stiller spørsmål, gir svaralternativ, og derfinerer riktig svar, for hver linje. 
 def spørsmaal():
     spørsmaal = readline()
     spiller1_poeng = 0 
@@ -70,20 +63,20 @@ def spørsmaal():
         print(linje.korrekt_svar())
         if linje.check_answer(spiller_1):
             spiller1_poeng += 1
-            print("Spiller 1: Riktig svar")
+            print("Spiller 1: Correckt answer! " "Spiller 1 har", spiller1_poeng, "poeng.")
         else:
-            print("Spiller 1: Feil svar")
-           
+            print("Spiller 1: Wrong answer. " "Spiller 1 har", spiller1_poeng, "poeng.")
+            
         if linje.check_answer(spiller_2):
             spiller2_poeng += 1
-            print("Spiller 2: Riktig svar")
+            print("Spiller 2: Correckt answer! " "Spiller 2 har", spiller2_poeng, "poeng.")
         else:
-            print("Spiller 2: Feil svar")
+            print("Spiller 2: Wrong answer. " "Spiller 2 har", spiller2_poeng, "poeng.")
            
     
-    print("\n Spiller 1 fikk poeng: ", spiller1_poeng)
+    print("\nSpiller 1 fikk poeng: ", spiller1_poeng)
     print("Spiller 2 fikk poeng: ", spiller2_poeng)
-            
+    print("\nGame done!")
 
         
 if __name__ == "__main__":
