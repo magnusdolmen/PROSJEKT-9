@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Oct 26 17:17:47 2021
+
+@author: magnusdolmen
+"""
+
+class MultipleChoice:
+    def __init__(self, question, answers, answer):
+        self.question = question
+        self.answers = answers
+        self.answer = answer
+
+    def __str__(self):
+        display =f"\n The question is: {self.question} \n" 
+        
+        for indeks,answers in enumerate(self.answers):
+            display += f"{indeks}: {answers} \n"
+            
+        return display
+    
+    
+    def check_answer(self, number):
+        
+        if number == self.answer:
+            return True
+        else:
+            return False
+        
+    def korrekt_svar(self):
+        return f"\n The correkt answer is: {self.answers[self.answer]} \n"
+    
+    
+   
+        
+                               
+            
+
+
+def readline():
+    spørsmålsliste = []
+    with open("sporsmaalsfil.txt", "r") as spørsmålsfil:
+        #dette er spørsmålene
+        for linje in spørsmålsfil:
+            ny_linje = linje.strip()
+            komponenter = ny_linje.split(":")
+            svaralternativ = komponenter[2].strip("[] + 1 \n") 
+            svaralternativ = svaralternativ.split(",")
+            komponenter[1] = komponenter[1].strip()
+            komponenter[1] = int(komponenter[1])
+            spørsmaal = MultipleChoice(komponenter[0], svaralternativ, komponenter[1])
+            spørsmålsliste.append(spørsmaal)
+    return spørsmålsliste
+    
+                
+             
+    
+            
+#må lage en funksjon som stiller spørsmål for hver linje. 
+def spørsmaal():
+    spørsmaal = readline()
+    spiller1_poeng = 0 
+    spiller2_poeng = 0
+    for linje in spørsmaal:
+        print(linje)
+        spiller_1 = (int(input("Spiller 1: What is your answer?: ")))
+        spiller_2 = (int(input("Spiller 2: What is your answer?: ")))
+       
+        print(linje.korrekt_svar())
+        if linje.check_answer(spiller_1):
+            spiller1_poeng += 1
+            print("Spiller 1: Riktig svar")
+        else:
+            print("Spiller 1: Feil svar")
+           
+        if linje.check_answer(spiller_2):
+            spiller2_poeng += 1
+            print("Spiller 2: Riktig svar")
+        else:
+            print("Spiller 2: Feil svar")
+           
+    
+    print("\n Spiller 1 fikk poeng: ", spiller1_poeng)
+    print("Spiller 2 fikk poeng: ", spiller2_poeng)
+            
+
+        
+if __name__ == "__main__":
+    spørsmaal()
+    
+    
+        
+
+        
+        
+        
+        
